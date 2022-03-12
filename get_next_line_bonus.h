@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:30:14 by rthammat          #+#    #+#             */
-/*   Updated: 2022/03/12 12:31:05 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:53:54 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define GET_NEXT_LINE_BONUS_H
 # include <limits.h>
 # include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-# include <fcntl.h>
 # include <unistd.h>
 
 char	*get_next_line(int fd);

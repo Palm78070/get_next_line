@@ -6,17 +6,13 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:23:41 by rthammat          #+#    #+#             */
-/*   Updated: 2022/03/12 12:20:23 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:54:08 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # include <stdlib.h>
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <fcntl.h>
 # include <unistd.h>
 
 char	*get_next_line(int fd);
