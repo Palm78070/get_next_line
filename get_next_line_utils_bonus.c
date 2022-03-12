@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:53:15 by rthammat          #+#    #+#             */
-/*   Updated: 2022/03/11 18:57:36 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/03/12 12:30:45 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,52 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-char	*ft_strchr(const char *string, int searchedChar )
+char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
+	int	i;
 
-	str = (char *)string;
-	while (*str != searchedChar && *str != 0)
-		str++;
-	if (*str == searchedChar)
-		return (str);
-	else
-		return (NULL);
+	i = 0;
+	if (c > 256)
+		c -= 256;
+	if (c == '\0')
+	{
+		while (((char *)s)[i] != '\0')
+			++i;
+		s = &s[i];
+		return ((char *)s);
+	}
+	while (s[i])
+	{
+		if (((char *)s)[i] == c)
+		{
+			s = &s[i];
+			return ((char *)s);
+		}
+		++i;
+	}
+	s = NULL;
+	return ((char *)s);
 }
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	*ft_calloc(size_t count, size_t size)
 {
 	char	*res;
 
-	res = (char *)malloc(elementSize * elementCount);
+	res = (char *)malloc(count * size);
 	if (!res)
 		return (NULL);
-	while (elementCount > 0)
-		res[elementCount--] = '\0';
+	while (count > 0)
+		res[count--] = '\0';
 	res[0] = '\0';
 	return (res);
 }
 
-size_t	ft_strxlen(const char *theString, char delim)
+size_t	ft_strxlen(const char *s, char delim)
 {
 	size_t	i;
 
 	i = 0;
-	while (theString[i] && theString[i] != delim)
+	while (s[i] && s[i] != delim)
 		i++;
 	return (i);
 }
