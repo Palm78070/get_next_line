@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:20:46 by rthammat          #+#    #+#             */
-/*   Updated: 2022/03/12 10:05:35 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:23:29 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ char	*ft_readline(char *buffer)
 	if (!buffer[i])
 		return (NULL);
 	i = ft_strxlen(buffer, '\n');
+	i += 1;
 	line = ft_substr(buffer, 0, i);
-	if (buffer[i] && buffer[i] == '\n')
-		line[i] = '\n';
 	return (line);
 }
 

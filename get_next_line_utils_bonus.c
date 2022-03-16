@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:53:15 by rthammat          #+#    #+#             */
-/*   Updated: 2022/03/12 12:30:45 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:25:05 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,20 @@ char	*ft_strchr(const char *s, int c)
 void	*ft_calloc(size_t count, size_t size)
 {
 	char	*res;
+	size_t	i;
+	size_t	t_size;
 
-	res = (char *)malloc(count * size);
+	t_size = count * size;
+	res = (char *)malloc(t_size);
 	if (!res)
 		return (NULL);
-	while (count > 0)
-		res[count--] = '\0';
-	res[0] = '\0';
-	return (res);
+	i = 0;
+	while (i < t_size)
+	{
+		res[i] = '\0';
+		++i;
+	}
+	return ((void *)res);
 }
 
 size_t	ft_strxlen(const char *s, char delim)
