@@ -6,40 +6,35 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:25:28 by rthammat          #+#    #+#             */
-/*   Updated: 2022/03/16 14:24:31 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:45:35 by rath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_nextline(char *buffer)
+char	*ft_nextline(char *buffer, size_t l_len)
 {
-	size_t		i;
 	char		*line;
 
-	i = ft_strxlen(buffer, '\n');
-	if (!buffer[i])
+	if (!buffer[l_len])
 	{
 		free(buffer);
 		return (NULL);
 	}
-	i += 1;
-	line = ft_substr(buffer, i, ft_strxlen(&buffer[i], '\0'));
+	l_len += 1;
+	line = ft_substr(buffer, l_len, ft_strxlen(&buffer[l_len], '\0'));
 	free(buffer);
 	return (line);
 }
 
-char	*ft_readline(char *buffer)
+char	*ft_readline(char *buffer, size_t l_len)
 {
 	char	*line;
-	size_t	i;
 
-	i = 0;
-	if (!buffer[i])
+	if (!buffer[0])
 		return (NULL);
-	i = ft_strxlen(buffer, '\n');
-	i += 1;
-	line = ft_substr(buffer, 0, i);
+	l_len += 1;
+	line = ft_substr(buffer, 0, l_len);
 	return (line);
 }
 
@@ -76,13 +71,15 @@ char	*get_next_line(int fd)
 {
 	static char	*buffer[OPEN_MAX];
 	char		*line;
+	size_t		l_len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer[fd] = ft_readfile(fd, buffer[fd]);
 	if (!buffer[fd])
 		return (NULL);
-	line = ft_readline(buffer[fd]);
-	buffer[fd] = ft_nextline(buffer[fd]);
+	l_len = ft_strxlen(buffer[fd], '\n');
+	line = ft_readline(buffer[fd], l_len);
+	buffer[fd] = ft_nextline(buffer[fd], l_len);
 	return (line);
 }
